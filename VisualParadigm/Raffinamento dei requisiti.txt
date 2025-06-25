@@ -1,0 +1,50 @@
+
+1. Requisiti sulle officine
+	1.1. nome
+	1.2. indirizzo
+	1.3. dipendenti (v. req. 3)
+		1.3.1. per ognuno, la data nella quale ha iniziato a prestarvi servizio (v. req. 3.2)
+	1.4. il direttore (v. req. 4)
+	1.5. numero di dipendenti (calcolabile)
+
+2. Requisiti sulle persone
+	2.1. nome
+	2.2. cognome
+	2.3. codice fiscale (unico)
+	2.4. indirizzo
+	2.5. numero di telefono
+
+3. Requisiti sui dipendenti
+	3.1. sono persone (v. req. 2)
+	3.2. per ognuna delle officine in cui lavora (un numero qualsiasi, anche nessuna), 
+		3.2.1. la data nella quale ha iniziato a lavorarci (v. req. 1.3.1)
+		3.2.2. gli anni di servizio (calcolabile)
+
+4. Requisiti sui direttori
+	4.1. sono persone (v. req. 2)
+	4.2. data di nascita
+	4.3. le officine che dirige (anche nessuna) (v. req. 1)
+
+5. Requisiti sulle riparazioni
+	5.0. l'officine nella quale ha luogo (v. req. 1)
+	5.1. codice (univoco)
+	5.2. veicolo (v. req. 6)
+	5.3. istante di accettazione
+	5.4. istante di riconsegna (opzionale, solo se la riparazione è terminata)
+
+6. Requisiti sui veicoli
+	6.1. targa (univoca per i veicoli)
+	6.2. anno immatricolazione
+	6.3. modello (v. req. 6)
+	6.4. i proprietari (almeno uno, sono persone) (v. req. 2)
+
+7. Requisiti sui modelli di veicolo
+	7.1. nome 
+	7.2. anno
+	7.3. casa produttrice (v. req. 8)
+	7.4. tipo (automobile, motociclo, autocarro, ecc.)
+	7.5. non esistono due modelli prodotti dalla stessa casa, con lo stesso nome e lo stesso anno
+
+8. Requisiti sulle case produttrici di veicoli
+	8.1. nome (univoco)
+	8.2. modelli prodotti (v. req. 7)

@@ -1,0 +1,102 @@
+SPECIFICA DELLO USE CASE STRUMENTI DI VENDITA:
+
+pubblica_compralosubito(prezzo: Reale >= 0, 
+descrizione: Stringa, 
+anni_g: Intero >= 0, 
+mp: MetodoDiPagamento, 
+is_nuovo: Booleano,
+cat: Categoria, 
+condizione: Condizione [0..1]
+): CompraloSubito
+
+precondizioni:
+	- is_nuovo = false se e solo se condizione è valorizzato
+	- se is_nuovo = true allora anni_g >= 2
+	- se l’attore che invoca l'operazione è Privato, allora is_nuovo è false
+
+postcondizioni: 
+- Creiamo l'oggetto cs di classe Compralosubito con:
+	-cs.prezzo = prezzo ( il prezzo deve essere uguale a quello passato per argomento)
+	- cs. garanzia = anni_g
+	- cs.descrizione = descrizione
+	- cs.pubblicazione = adesso
+- Se is_nuovo = true:
+	- cs è di classe Nuovo ( cs: Nuovo)
+- Altrimenti (is_nuovo = false):
+	- cs è di classe Usato ( cs: Usato)
+	- cs. Condizione = condizione
+-Creiamo il link che coinvolge cs e categoria cat “ cat_post” ( cs, cat): cat_post)
+-Creiamo il link che coinvolge cs e mp “post_met” ( in breve cs,mp): post_met)
+-Se u:Utente, se u:VenditoreProf:
+	- creiamo il link (cs,u): post_ut
+Altrimenti(u:Privato):
+	creiamo il link (u,cs):priv_us
+result = cs
+
+
+
+SPECIFICA DELLO USE CASE STRUMENTI DI ACQUISTO:
+
+AcquistaCompraloSubito(cs: CompraloSubito)
+cs_ut
+
+postcondizione:
+	-Sia U l'attore relativo all'oggetto della classe Privato che invoca l'operazione
+	-Crea e ritorna l'istanza di associazione cs_ut con istante = adesso tra U e cs
+
+result = cs_ut
+
+
+
+SPECIFICA USE CASE STATISTICHE VENDITORI:
+
+popolarità(i: DataOra): Popolarità
+affidabilità(i: DataOra): Reale in [0..1]
+
+postcondizione:
+	- creiamo l'insieme che coinvolge gli u_r: Utente registrato e u_n_r: Utente non registrato
+	-creiamo l'oggetto v_p: Venditore professionale
+	- creiamo l'istanza di associazione v: visualizza
+	- consideriamo u_r e u_n_r che coinvolgono l'istanza di associazione v tale che v riporti alla popolarità e all'affidabilità dell'oggetto v_p (con affidabilità che abbia un voto >= 2)
+	
+	
+
+SPECIFICA USE CASE GESTIONE SITO:
+
+gestione categoria(nome: Stringa)
+
+precondizione: 
+	Per ogni c[1],...,c[n]:Categoria dove:
+	- (c[1],c[2]):sottocategoria
+	- (c[2],c[3]):sottocategoria
+	- ...
+	- (c[n-1],c[n]):sottocategoria
+	Non può esistere (c[n],c[1]):sottocategoria.
+
+postcondizione:
+	-creiamo l'oggetto a: Amministratore che coinvolge l'oggetto c: Categoria tale che a può creare, modificare o cancellare c.
+	- a ha il ruolo di verificare la correttezza dei link di associazione post_ut, priv_us, asta_bid, bid_ut.
+	- creiamo l'oggetto u:Utente
+	-a ha il compito di verificare la validità di u_p: Privato e u_v_p: Venditore Professionale.
+	
+	
+	
+	
+SPECIFICA USE CASE STRUMENTI REGISTRAZIONE:
+
+username: Stringa
+
+precondizione:
+	[scritto dal prof:
+	precondizioni: non esite un u:Utente tale che u.username sia uguale a username.
+	postcondizione:
+	-crea e restituisce l'oggetto u:Utente e assegna:e = username
+		u.registrazione = adesso]
+	-creiamo l'oggetto di classe Utente:
+		-con p = Privato
+		-con v_p = Venditore Professionale
+		-sia Registrazione = adesso
+	-sia p e v_p appartenenti alla classe oggetto Utente tale che l'username di p e v_p sia univoca.
+	
+	
+

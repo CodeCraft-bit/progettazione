@@ -1,0 +1,33 @@
+Specifica requisiti di Go:
+
+
+1- Giocatori
+1.1.nickname(univoco)
+1.2.nome
+1.3.cognome
+1.4.rank dichiarato(intero positivo)
+1.5.indirizzo
+1.6.due giocatori si possono sfidare in una partita
+
+
+2- Tornei
+2.1.nome
+2.2.descrizione testuale
+2.3.edizione in termini dell'anno in cui si svolge
+
+
+3-Partite
+3.1.possono riferirsi ad un torneo
+3.1.data
+3.2.luogo in cui è giocata
+3.3.regole di conteggio usate(giapponesi o cinesi)
+3.4.quale giocatore gioca con le pietre bianche
+3.6.fattore di deficit chiamato komi(numero reale non negativo compreso tra 0 e 10)
+3.5.quale giocatore gioca con le pietre nere
+
+
+
+4-Esito
+4.1.rinuncia di uno dei due giocatori
+4.2.coppia di punteggi di bianco e di nero(interi non negativi)
+

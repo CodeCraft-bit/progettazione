@@ -1,0 +1,26 @@
+SPECIFICA USE CASE RECENSIONE
+
+voto: Intero
+reale(hotel)
+rc_h
+h[0..*]
+
+postcondizioni:
+	-sia H l'insieme degli h: hotel che partecipano ad almeno un link recensione
+	-sia result l'insieme che comprende la coppia h, m( con m = media(h))
+	
+
+
+
+
+
+
+
+
+
+
+(nessun hotel partecipa ad un link recensione [0..*]
+
+per ogni hotel che partecipa al link di associazione recensione considero l'operazione ....
+
+somma voti/ numero dei link delle recensioni di hotel)

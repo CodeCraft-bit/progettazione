@@ -1,0 +1,53 @@
+Documento di specifica Accademia 2
+
+- Specifica dei tipi di Dato:
+
+-Tipo di Dato Posizione: enumerativo:
+{ricercatore,professore associato,professore ordinario}
+
+-Tipo di Dato Assenza: Stringa
+{chiusura universitaria, malattia, gravidanza, ecc...}
+
+-Tipo di Dato Istituzionale: Stringa
+{didattica, ricerca, missione, consiglio di dipartimento, consiglio di area didattica, ecc...}
+
+-Tipo d Dato Progettuale:
+{Ricerca e Sviluppo, Dimostrazone, Management, ecc...}
+
+
+
+- Specifica dello use-case Iniziare un progetto
+
+Presa in carico (d:Docente, p_r:Progetto di Ricerca, w_p:Work Package, dt:Data)
+Pre-condizione:
+(d) presenta un collegamento con (p_r) e (w_p) in una (dt) specifica e non ci saranno altri progetti con lo stesso acronimo
+Post-condizione:
+verranno controllati i link di assoc. tra (d, p_r) e tra (w_p, d_i)
+
+- Specifica dello use-case Finire un Progetto
+Conclusione lavoro (d:Docente, p_r:Progetto di Ricerca, w_p:Work Package, d_f:Data Fine)
+Pre-condizione:
+(d) presenta un collegamento con (p_r) e (w_p) in una (d_f) specifica
+Post-condizione:
+verranno rimossi i link di assoc. tra (d, p_r) e tra (w_p, d_f)
+
+- Specifica dello use-case Registrare un Impegno
+registrazione impegno (d:Docente, i_d:Impegno Docente, g:Giorno, d_o:Durata in Ore)
+Pre-condizione:
+(d) ha un link di assoc. con (i_d, a_d) in un (g, d_o) precisa ad esclusione di (a_d:malattia che dura tutto il giorno)
+Post-condizione:
+verranno controllati i link di assoc. tra (d, i_d, a_d) e tra (d, g, d_o) con la relativa motivazione e con un solo impegno 
+
+- Specifica dello use-case Visualizzare Impegno
+visualizzare Impegno (d:Docente, i_d:Impegno Docente, g:Giorno, d_o:Durata in Ore)
+Pre-condizione:
+si prenda in considerazione il link (già) esistente tra (d,i_d)
+Post-condizione:
+verranno controllati i link di assoc. tra (d, a_d)
+
+- Specifica dello use-case Visualizzare il Progetto Iniziato
+visualizzare il progetto iniziato (d:Docente, p_r:Progetto di Ricerca, w_p:Work Package, d_i:Data Inizio)
+Pre-condizione:
+verifica dello stato del link tra (d, p_r, w_p)
+Post-condizione:
+verranno controllati i link (d,p_r, w_p, d_i) 

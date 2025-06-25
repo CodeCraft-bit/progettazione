@@ -1,0 +1,63 @@
+[V.cs_utCompraloSubito.pubblicazioneMinoreScadenza] un post di tipo compralo subito non può essere acquistato prima della sua pubblicazione.
+
+Per ogni istanza p: Post compralo subito coinvolto nel link di associazione cs_ut con un ut: Utente, p.pubblicazione deve essere < di cs_ut.istante 
+
+
+[V.VenditoreProfPostOggetto.pubblicazioneMaggioreRegistrazione] I venditori professionali non possono pubblicare post prima di essere registrati. 
+
+Per ogni istanza v: VenditoreProfessionale coinvolto nel link di associazione post_ut con p: PostOggetto, p.pubblicazione deve essere > v.registrazione
+
+-> [V.PrivatoBid.nonSelfBid] Gli utenti privati non possono fare bid sulle aste pubblicate da loro.
+
+Per ogni istanza p: Privato coinvolto nei link di associazione priv_us con istanza di a: Asta e a: Usato, non possono esistere b: Bid nel link di associazione asta_bid insieme ad a e che hanno bid_ut che coinvolgono sia b che p.
+
+
+-L'istante di acquisto di un post in modalità "compralo subito" deve essere successivo alla pubblicazione del post.
+
+Per ogni istanza di c: CompraloSubito coinvolto nel link di associazione cs_ut con ut: Utente, p.pubblicazione deve essere > di cs_ut.istante.
+
+
+-I feedback dei post possono essere dati solo dopo che il post è stato acquistato in modalità "compralo subito" oppure se l'asta è terminata e ha un vincitore (cioè, almeno un bid).
+
+Per ogni istanza di f: Feedback istanza di p: Post tale che c: Compralosubito esiste solo se a: Asta è terminata o se ut: Utente è coinvolto nel link di associazione bid_ut.
+
+
+-L'albero delle categorie non può formare cicli
+
+Date le istanze c: Categorie coinvolte nel link di associazione sotto_categoria, tale che c[S] è sempre > di s: Sottocategoria.
+
+
+
+
+Specifica dell'operazione Finita: Booleano
+
+precondizioni:
+	-Non ci sono precondizioni
+postcondizioni:
+	-Non ha side effect
+	-Se adesso > this.scadenza, result = true
+	-Altrimenti result = false
+	
+
+
+Ultimo_bid(i:DataOra): Bid[0..1]
+
+precondizioni:
+postcondizioni:
+	-Non ha side effect.
+	-Sia B l'insieme dei b:Bid coinvolti in asta_bid con this, tali che b.istante <= i.
+	-result è il b in B con b.istante maggiore.
+	
+	
+Vincitore(): Utente[0..1]
+precondizioni: 
+	-this.conclusa() è true.
+postcondizioni:
+	- b = this.ultimo_bid(adesso)
+	- result è il p:Privato tale che sia coinvolto in un link di associazione bid_ut con b.
+
+
+
+
+
+

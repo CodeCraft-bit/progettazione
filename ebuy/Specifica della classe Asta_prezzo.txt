@@ -1,0 +1,7 @@
+[V.cs_utCompraloSubito.pubblicazioneMinoreScadenza] un post di tipo compralo subito non può essere acquistato prima della sua pubblicazione.
+
+Per ogni istanza p: Post compralo subito coinvolto nel link di associazione cs_ut con un ut: Utente, p.pubblicazione deve essere < di cs_ut.istante 
+
+
+
+

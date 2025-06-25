@@ -1,0 +1,84 @@
+Raffinamento requisiti esercitazioni universitarie:
+1- Corsi: può avere più canali ,
+1.1 nome
+1.2 relativo numero di crediti formativi
+1.3 docenti (possono essere più di uno)
+1.4 anno accademico di riferimento
+
+2-Esercitazioni: può avere più canali del corso ma spesso possono essere associate a piu di un canale del corso 
+2.1 codice (stringa)
+2.2 composta da molti esercizi
+
+3-Esercizi:
+3.1 testo e relativa soluzione
+3.2 esercitazioni in cui è stato presentato
+3.3 esercitazioni in cui è stato risolto
+
+4-canali esercitazioni:
+4.1 numero studenti
+4.2 docenti
+
+5-università:
+5.1 nome
+5.2 indirizzo
+
+
+6-facoltà:
+6.1 nome
+6.2 numero corsi di laurea 
+6.3 email
+6.4 telefono
+
+7-dipartimento:
+7.1 nome
+7.2 direttore
+7.3 segretario amministrativo
+7.4 indirizzo
+7.5 telefono
+7.6 email
+
+8-corso di studi:
+8.1 nome
+8.2 codice corso (ex 29925)
+8.3 classe di laurea (stringa alfanumerica ex L-41)
+
+9-nazione:
+9.1 nome
+
+10-regione:
+10.1 nome
+
+11-città:
+11.1 nome
+
+12-aula
+12.1 nome
+12.2 numero
+
+13-canali del corso:
+13.1 in riferimento alla suddivisione(a-l/l-z,ecc)
+
+14-docenti:
+14.1 nome
+14.2 ruolo
+14.3 email
+
+15-studenti
+15.1 numero
+15.2 canale esercitazione di riferimento
+
+
+due canali del corso e ex 4  esercitazioni
+
+corso analisi 1 nove credite fom, primo semestre del primo anno di lauera magistr mate, 84 ore
+2 canali al(garroni, ha due canali di esercitazioni, insegnate da pippo e pluto) mz(malusa, ha 2 can eserc, da pluto e paperino)
+
+possiamo decidere ch pippo va da a-f e pluto da f-l
+pluto va da m-p e paperino va da q-z
+
+i due canali di pluto possono essere svolti o in aule diverse o nella stessa  
+
+
+
+
+

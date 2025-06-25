@@ -1,0 +1,42 @@
+Raffinameto requisiti Officine1:
+1- Officine della catena:
+1.1 nome
+1.2 indirizzo
+1.3 numero dipendenti
+1.4 i dipendenti con il numero relativo di anni di servizio
+1.5 il direttore
+
+
+2-Dipendenti
+2.1 nome
+2.2 cf
+2.3 indirizzo
+2.4 numero di telefono
+
+
+3-Direttori
+3.1 nome
+3.2 cf
+3.3 indirizzo
+3.4 numero di telefono
+3.5 data di nascita
+
+
+
+4-Riparazione dei veicoli
+4.1 codice 
+4.2 il veicolo (modello, tipo, targa, anno di
+immatricolazione e proprietario)
+4.3 data accettazione
+4.4 ora accettazione
+4.5 data riconsegna (per le riparazioni terminate)
+4.6 ora riconsegna (per le riparazioni terminate)
+
+
+5-Proprietari:
+5.1 nome
+5.2 cf
+5.3 indrizzo
+5.4 telefono
+
+
