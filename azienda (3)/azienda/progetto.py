@@ -1,5 +1,10 @@
 from custom_types import RealGEZ
+from coinvolto import Coinvolto
+from typing import TYPE_CHECKING
 
+if TYPE_CHECKING:
+    from impiegato import Impiegato
+    
 
 class Progetto:
     _nome: str #noto alla nascita
@@ -28,8 +33,6 @@ class Progetto:
         self._budget = b
 
     def add_impiegato(self, impiegato: 'Impiegato') -> None:
-        from impiegato import Impiegato
-        from coinvolto import Coinvolto
         if impiegato in self._impiegato:
             raise ValueError
         c = Coinvolto(impiegato, self)

@@ -42,3 +42,7 @@ p1 = Progetto("CCCc", RealGEZ(11111))
 p1.add_impiegato("Alice")
 
 print(p1._impiegato)
+
+print(dip1.add_link_direzione(alice))
+
+print(dip2.add_link_afferenza(bob))

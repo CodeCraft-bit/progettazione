@@ -1,17 +1,21 @@
-from impiegato import Impiegato
-from progetto import Progetto
+from typing import TYPE_CHECKING
+
+if TYPE_CHECKING:
+    from impiegato import Impiegato
+    from progetto import Progetto
 
 class Coinvolto:
-    _impiegato: Impiegato #noto alla nascita <<immutable>>
-    _progetto: Progetto #noto alla nascita <<immutable>>
+    
+    _impiegato: 'Impiegato' #noto alla nascita <<immutable>>
+    _progetto: 'Progetto' #noto alla nascita <<immutable>>
 
-    def __init__(self, impiegato: Impiegato, progetto: Progetto) -> None:
+    def __init__(self, impiegato: 'Impiegato', progetto: 'Progetto') -> None:
         self._impiegato = impiegato
         self._progetto = progetto
 
-    def impiegato(self) -> Impiegato:
+    def impiegato(self) -> 'Impiegato':
         return self._impiegato
     
-    def progetto(self) -> Progetto:
+    def progetto(self) -> 'Progetto':
         return self._progetto
         

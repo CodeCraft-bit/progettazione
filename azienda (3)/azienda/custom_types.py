@@ -3,7 +3,6 @@ from typing import Self, Type
 from typing import Any
 import re
 
-
 class RealGEZ(float):
     # Tipo di dato Reale >= 0
 

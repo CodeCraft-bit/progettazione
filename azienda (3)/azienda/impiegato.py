@@ -1,6 +1,11 @@
 from datetime import date
 from custom_types import RealGEZ
 
+from typing import TYPE_CHECKING
+
+if TYPE_CHECKING:
+    from coinvolto import Coinvolto
+    from progetto import Progetto
 
 class Impiegato:
     _nome: str # noto alla nascita
@@ -43,7 +48,8 @@ class Impiegato:
     def progetto(self) -> dict['Progetto', 'Coinvolto']:
         return self._progetto
     
-    '''def add_progetto(self, progetto: Progetto) -> None:
-        self._progetto[progetto] = progetto
+    def _add_progetto(self, link: 'Coinvolto') -> None:
+        self._progetto[link.progetto()] = link
 
-    def remove_progetto(self, progetto: )'''
+    def __repr__(self)->str:
+        return f"{self.nome()}, {self.cognome()}, {self.nascita()}, {self.stipendio()}"

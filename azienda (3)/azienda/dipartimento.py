@@ -1,13 +1,22 @@
+from __future__ import annotations
 from custom_types import Telefono, Indirizzo
 from direzione import Direzione
-from impiegato import Impiegato
+from typing import TYPE_CHECKING
+from datetime import datetime
+from afferenza import Afferenza
+
+if TYPE_CHECKING:
+    from impiegato import Impiegato
+    
 
 class Dipartimento:
 
     _nome: str # noto alla nascita
     _telefoni: set[Telefono] # [1..*] noto alla nascita
     _indirizzo: Indirizzo | None  # [0..1] possibilmente non noto alla nascita
-    _direzione: dict[Impiegato, Direzione]
+    _direzione: dict[Direzione]
+    _afferenza: dict[Afferenza]
+
 
     def __init__(self, nome: str, tel: Telefono, ind: Indirizzo|None) -> None:
         self.set_nome(nome)
@@ -19,6 +28,8 @@ class Dipartimento:
         # self.set_telefoni({tel})
 
         self.set_indirizzo(ind)
+        self._direzione = {}
+        self._afferenza = {}
 
     def nome(self) -> str:
         return self._nome
@@ -56,6 +67,37 @@ class Dipartimento:
             ind_str: str = f"con sede in {self.indirizzo()}"
 
         return f"Dipartimento '{self.nome()}' {ind_str} e numeri telefono: {self.telefoni()}"
+    
+    def direzione(self) -> dict[Impiegato, Direzione]:
+       return self._direzione
+    
+    def add_link_direzione(self, impiegato: Impiegato) -> None:
+        
+        for x in self._direzione.values():
+            if x.impiegato() == impiegato:
+                for y in x.dipartimento():
+                    if y == self:
+                        raise ValueError('Il dipartimento è già presente')
+                    else:
+                        x.dipartimento().append(self)
+        d = Direzione(impiegato, self)
+        self._direzione['Link'] = d
+        return self._direzione
+    
+    def add_link_afferenza(self, impiegato: Impiegato, data_afferenza: datetime = datetime.now()) -> None:
+        for x in self._afferenza.values():
+            if x.dipartimento() == self:
+                for y in x.impiegato():
+                    if y == impiegato:
+                        raise ValueError("L'impiegato è già presente")
+                    else:
+                        y.impiegato().append(impiegato)
+        a = Afferenza(impiegato, self, data_afferenza)
+        self._afferenza['Link'] = a
+        return self._afferenza
+
+
+
 
 
 if __name__ == "__main__":
