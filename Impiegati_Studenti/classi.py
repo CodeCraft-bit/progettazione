@@ -126,12 +126,13 @@ class Impiegato(Persona):
         self.set_is_responsabile() = True
 
     def add_progetto(self, progetto: Progetto)-> None:
-        if progetto in self._progetto:
-            raise ValueError
-        r = resp_prog._link(progetto, self)
-        t = tuple(progetto, r)
-        self._progetto.add(t)
-    
+        if self.is_responsabile():
+            if progetto in self._progetto:
+                raise ValueError
+            r = resp_prog._link(progetto, self)
+            t = tuple(progetto, r)
+            self._progetto.add(t)
+        
     def remove_progetto(self, progetto: 'Progetto', r: resp_prog._link) -> None:
         for t in self._progetto:
             x,y = t
